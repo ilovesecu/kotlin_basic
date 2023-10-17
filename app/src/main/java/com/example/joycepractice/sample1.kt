@@ -8,7 +8,7 @@ fun main(){
     templateString();
 
     checkNum(10)
-    //22
+    forAndWhile()
 }
 
 //1. 함수
@@ -130,4 +130,54 @@ fun array(){
     val arrayList = arrayListOf<Int>(1,2);
     arrayList.add(10);
     arrayList.add(20);
+}
+
+/*
+7. 반복문
+for, while
+*/
+fun forAndWhile(){
+    val studnets = arrayListOf<String>("joyce", "james", "jenny","sj")
+    for(name in studnets){
+        //js와 비슷하게 in이라는 키워드로 for반복문 사용
+        println("${name}")
+    }
+    //1 ~ 10 (포함)
+    var sum = 0;
+    for(i in 1..10){
+        sum += i;
+    }
+
+    // 2씩 증가
+    var odd = 0;
+    for(i in 1..10 step 2){
+        //1 3 5 7 9
+        odd += i;
+    }
+    println("sum:${sum}, odd:${odd }");
+
+    // 1씩 감소
+    for(i in 10 downTo 1){
+        //10 9 8 7 6 5 .. 1
+        print("${i} ")
+    }
+
+    // 100을 포함하지 않는다.
+    for(i in 1 until 100){
+        print("${i} ")
+    }
+    println("")
+
+    //for문 index와 함께 사용
+    for((index, name) in studnets.withIndex() ){
+        //index와 name을 함께 사용가능
+        println("${index+1}번째 학생 이름:${name}")
+    }
+
+    //while문
+    var index = 0;
+    while(index < 10){
+        //println("current Index : ${index}");
+        index++;
+    }
 }
