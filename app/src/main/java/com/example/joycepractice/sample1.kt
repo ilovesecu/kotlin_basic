@@ -8,6 +8,7 @@ fun main(){
     templateString();
 
     checkNum(10)
+    //22
 }
 
 //1. 함수
@@ -98,4 +99,35 @@ fun checkNum(score:Int){
         else -> "okky"
     }
     println("str: ${str}");
+}
+
+/*
+ Expression vs Statement
+ Expression : 뽀짝뽀짝 해서 값을 만들면 Expression
+    -모든 함수 (리턴이 없어도 Unit을 만들기도 하니까)
+ Statement : 이거이거 해 명령을 지시함.
+*/
+
+/*
+ 6. Array vs List
+ - Array : 정적 메모리 할당 (이미 배열의 크기가 정해져있음.)
+ - List
+    1. List (수정 불가능 리스트) [읽기 전용]
+    2. Mutable List (수정 가능 리스트) [읽기, 쓰기 가능]
+*/
+fun array(){
+    val array = arrayOf(1,2,3);
+    val list = listOf(1,2,3);
+
+    val array2 = arrayOf(1,"d",4.5f);
+    val list2 = listOf(1,2,"dfadsf",'c',123L);
+
+    //배열은 기본적으로 수정이 됨. (크기 빼고)
+    array[1] = 4;
+    //List는 읽기 전용임. (Interface 이며, get만 구현)
+    val result = list.get(0);
+    //ArrayList는 수정 가능 리스트임.
+    val arrayList = arrayListOf<Int>(1,2);
+    arrayList.add(10);
+    arrayList.add(20);
 }
