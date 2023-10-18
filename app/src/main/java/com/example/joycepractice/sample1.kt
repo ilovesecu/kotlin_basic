@@ -9,6 +9,7 @@ fun main(){
 
     checkNum(10)
     forAndWhile()
+    nullcheck();
 }
 
 //1. 함수
@@ -137,8 +138,8 @@ fun array(){
 for, while
 */
 fun forAndWhile(){
-    val studnets = arrayListOf<String>("joyce", "james", "jenny","sj")
-    for(name in studnets){
+    val students = arrayListOf<String>("joyce", "james", "jenny","sj")
+    for(name in students){
         //js와 비슷하게 in이라는 키워드로 for반복문 사용
         println("${name}")
     }
@@ -169,7 +170,7 @@ fun forAndWhile(){
     println("")
 
     //for문 index와 함께 사용
-    for((index, name) in studnets.withIndex() ){
+    for((index, name) in students.withIndex() ){
         //index와 name을 함께 사용가능
         println("${index+1}번째 학생 이름:${name}")
     }
@@ -179,5 +180,37 @@ fun forAndWhile(){
     while(index < 10){
         //println("current Index : ${index}");
         index++;
+    }
+}
+
+/*
+JAVA와 가장 큰 차이점
+Nullable / NonNull
+*/
+fun nullcheck(){
+    //NPE : Null Pointer Exception - Runtime Error
+    //? 연산자 컴파일 시점에 NPE를 잡아줄게!
+    var name : String = "joyce";
+    //var nullName : String = null; // NonNull Type
+    var nullableName : String? = null; //Nullable Type ?키워드
+    var nameInUpperCase : String = name.uppercase();
+    var nullNameInUpperCase : String? = nullableName?.uppercase(); // JS의 ?.와 비슷하다. nullableName이 null인지 판별해서 null이 아니라면 uppercase()를하고, 아니면 null을 반환한다.
+    
+    // ?: 엘리스뭐시기 연산자 --> 해당 값이 null이면? ~~ 해라 를 지정할 수 있다. [기본값 지정]
+    val lastName : String? = null;
+    val fullName = name + (lastName?:"No LastName")
+    println(fullName)
+
+    // !! 컴파일러한테 이거 null아니야! 라고 내가 보증해줄게 라고 말해주는것
+    fun ignoreNulls(str:String?){
+        //val mNotNull : String = str; // null이 올 수 있어서 String type 선언 불가능
+        val mNotNull : String = str!!; // 하지만 !! 연산자를 사용하면 이거 내가 보증하는데 null 아니야! (사용은 좀 지양해야함. NPE 나올수도있음)
+    }
+
+    // let 함수 -> 자신의 리시버 객체를 람다식 내부로 옮겨서 실행하는 구문
+    val email : String? = "ilovepc@naver.com"
+    email.let {
+        //email이 null이 아니면 해당 람다식 내부로 email을 옮겨준다.
+        println("my email is ${it} ${email}")
     }
 }
