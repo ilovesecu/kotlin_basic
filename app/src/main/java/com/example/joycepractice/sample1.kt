@@ -207,10 +207,12 @@ fun nullcheck(){
         val mNotNull : String = str!!; // 하지만 !! 연산자를 사용하면 이거 내가 보증하는데 null 아니야! (사용은 좀 지양해야함. NPE 나올수도있음)
     }
 
-    // let 함수 -> 자신의 리시버 객체를 람다식 내부로 옮겨서 실행하는 구문
+    // let 함수 -> 자신의 리시버 객체를 람다식 내부로 옮겨서 실행하는 "구문" --> Null이 아니면 실행하는 구문! 이라고 이해하면될듯함
     val email : String? = "ilovepc@naver.com"
-    email.let {
+    email?.let {
         //email이 null이 아니면 해당 람다식 내부로 email을 옮겨준다.
         println("my email is ${it} ${email}")
     }
 }
+
+//8. class --> 새로운 파일 만들어서 진행
