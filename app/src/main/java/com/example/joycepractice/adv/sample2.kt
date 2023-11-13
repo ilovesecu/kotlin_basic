@@ -10,7 +10,8 @@ package com.example.joycepractice.adv
 -람다의 기본 정의
  val lamdaName : Type = {argumentList -> codeBody}
 -중괄호를 사용하면 어떤 함수를 변수안에 넣을 수 있구나! 를 깨닫는것이 중요하다.
--Type --> (입력파라미터) -> (출력파라미터) (입력파라미터는 여러 개 일수도있으니 소괄호가 필수, 출력파라미터는 소괄호 생략가능)
+-Type = (입력파라미터) -> (출력파라미터) : (입력파라미터는 여러 개 일수도있으니 소괄호가 필수, 출력파라미터는 소괄호 생략가능)
+-왜 Type인가 했더니 1-4에 메소드의 파라미터로 넘겨주는걸 실습하는데 그때 자료형 부분에 해당 타입을 써서 그런거였음.
  */
 
 val square : (Int) -> (Int) = {number -> number * number}
@@ -29,6 +30,13 @@ fun main(){
     println(extendString("ariana",22))
     //1-3
     println(calculateGrade(97))
+    //1-4
+    val lambda : (Double) -> Boolean = { number ->
+        number == 4.3213
+    }
+    println(invokeLambda(lambda))
+    //람다 리터럴방식 바로 중괄호를 쓰는 방식
+    println(invokeLambda { it > 3.22 }) //5.2343이 3.22보다 크니까 true, 함수의 마지막 파라미터가 람다식일 때는 저렇게 소괄호 생략하고 {} 만 써도됨.
 }
 
 /*
@@ -60,3 +68,19 @@ val calculateGrade : (Int) -> String = {
         else -> "Error"
     }
 }
+
+/*
+1-4 람다를 표현하는 여러가지 방법
+1. 메소드의 파라미터로 넘겨질 수 있다.
+*/
+
+fun invokeLambda(lambda:(Double)->Boolean ) : Boolean {
+    return lambda(5.2343)
+}
+
+/*
+1-5 람다 익명내부함수
+조건
+    -코틀린 인터페이스가 아닌 자바 인터페이스
+    -그 인터페이스는 딱 하나의 메서드만 가져야한다.
+*/
